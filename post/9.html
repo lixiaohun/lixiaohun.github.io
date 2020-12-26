@@ -6,20 +6,40 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020/12 | 李小混的Blog</title>
+  <title>seedlab缓冲区溢出实验 | 李小混的Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="李小混的Blog">
-<meta property="og:url" content="http://example.com/archives/2020/12/index.html">
+  <meta name="description" content="seedlab缓冲区溢出实验一、实验目的本实验的学习目标是让学生通过将他们从课堂上学到的有关漏洞的知识付诸实践，获得有关缓冲区溢出漏洞的第一手经验。缓冲区溢出定义为程序试图在预分配的固定长度缓冲区的边界之外写入数据的条件。恶意用户可以利用此漏洞来更改程序的流控制，甚至执行任意代码。出现此漏洞的原因是数据存储区（例如缓冲区）和控件存储区（例如返回地址）的混合：数据部分的溢出会影响程序的控制流程，因为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="seedlab缓冲区溢出实验">
+<meta property="og:url" content="http://example.com/post/9.html">
 <meta property="og:site_name" content="李小混的Blog">
-<meta property="og:description" content="个人博客">
+<meta property="og:description" content="seedlab缓冲区溢出实验一、实验目的本实验的学习目标是让学生通过将他们从课堂上学到的有关漏洞的知识付诸实践，获得有关缓冲区溢出漏洞的第一手经验。缓冲区溢出定义为程序试图在预分配的固定长度缓冲区的边界之外写入数据的条件。恶意用户可以利用此漏洞来更改程序的流控制，甚至执行任意代码。出现此漏洞的原因是数据存储区（例如缓冲区）和控件存储区（例如返回地址）的混合：数据部分的溢出会影响程序的控制流程，因为">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170437355.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170503304.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170516846.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170613493.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170631396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170651472.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170709435.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170723786.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170742445.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170829769.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020122617090832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170924143.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226170958317.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226171012139.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226171055817.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226171110429.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-12-26T09:12:13.584Z">
+<meta property="article:modified_time" content="2020-12-26T09:22:09.985Z">
 <meta property="article:author" content="李小混">
-<meta property="article:tag" content="CTF,软件安全,网络安全,IOT">
+<meta property="article:tag" content="seedlab">
+<meta property="article:tag" content="软件安全">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201226170437355.png">
   
     <link rel="alternative" href="/atom.xml" title="李小混的Blog" type="application/atom+xml">
   
@@ -208,41 +228,144 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-seedlab缓冲区溢出实验" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      seedlab缓冲区溢出实验
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/post/9.html" class="archive-article-date">
         <time datetime="2020-12-26T09:12:13.584Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="seedlab缓冲区溢出实验"><a href="#seedlab缓冲区溢出实验" class="headerlink" title="seedlab缓冲区溢出实验"></a>seedlab缓冲区溢出实验</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>本实验的学习目标是让学生通过将他们从课堂上学到的有关漏洞的知识付诸实践，获得有关缓冲区溢出漏洞的第一手经验。缓冲区溢出定义为程序试图在预分配的固定长度缓冲区的边界之外写入数据的条件。恶意用户可以利用此漏洞来更改程序的流控制，甚至执行任意代码。出现此漏洞的原因是数据存储区（例如缓冲区）和控件存储区（例如返回地址）的混合：数据部分的溢出会影响程序的控制流程，因为溢出会改变返回地址。</p>
+<a id="more"></a>
+
+
+
+<h2 id="二、实验步骤与结果"><a href="#二、实验步骤与结果" class="headerlink" title="二、实验步骤与结果"></a>二、实验步骤与结果</h2><h3 id="首先进行初始设置："><a href="#首先进行初始设置：" class="headerlink" title="首先进行初始设置："></a>首先进行初始设置：</h3><p>1、关闭地址空间随机化，为了防止堆栈地址和动态链接库加载地址随机化从而无法执行目标shellcode。</p>
+<p>2、在编译程序时应该设置堆栈不可执行，否则shellcode是无法在栈上执行的。</p>
+<p>3、关闭stack guard机制，防止栈溢出被检测出来，但是如果有格式化字符串漏洞的话，可以尝试泄露cancary的值，然后可以在构造的时候在ebp之前加上该值就可以执行shellcode了。</p>
+<p>4、将/bin/sh的符号链接指向/bin/zsh，因为在16.04中默认是指向/bin/bash的，而该shell会检测到它在一个Set-UID 进程中被执行，它会立即切换有效的user ID 为进程的真实user ID，放弃特权。</p>
+<h3 id="Task1-运行shellcode"><a href="#Task1-运行shellcode" class="headerlink" title="Task1:运行shellcode"></a>Task1:运行shellcode</h3><p>加入编译条件后</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -z execstack -o call_shellcode call_shellcode.c</span><br></pre></td></tr></table></figure>
+<p>运行结果如下:<br><img src="https://img-blog.csdnimg.cn/20201226170437355.png" alt="在这里插入图片描述"><br>的确打开了/bin/sh这个shell，说明shell可以被调用成功。</p>
+<p>之后查看漏洞程序，发现存在缓冲区溢出漏洞，向24字节大小的地址中写入517个字节的大小。这517个字节数据来自于badfile文件，所以重点就是如何构造输入数据。</p>
+<p>之后对于漏洞程序来说，如果我们想要拿到root权限，那么调用shell的程序也是 应该具有root权限才可以，否则只会像上图一样以普通用户模式打开shell。所以应该对此程序设为set-uid root。指令调用如下：<br><img src="https://img-blog.csdnimg.cn/20201226170503304.png" alt="在这里插入图片描述"><br>调用结束之后，<br><img src="https://img-blog.csdnimg.cn/20201226170516846.png" alt="在这里插入图片描述"><br>发现修改成功，task1结束。</p>
+<h3 id="Task2-利用漏洞"><a href="#Task2-利用漏洞" class="headerlink" title="Task2:利用漏洞"></a>Task2:利用漏洞</h3><p>既然要利用程序，那么确定buffer相对于返回地址的偏移量便是很重要的，一旦确定偏移量，那么返回地址上面覆盖为需要执行的代码即可。</p>
+<p>   首先随机生成100个字节写入badfile中，然后运行stack，在gdb中程序会停住。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201226170613493.png" alt="在这里插入图片描述"><br>停住的原因就是返回地址无法识别为可执行的数据。如果能得到EBP的偏移量，那么返回地址就在后面4个字节处，之后查看偏移量：</p>
+<p><img src="https://img-blog.csdnimg.cn/20201226170631396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现偏移量为32，也就是我们的shellcode的地址应该放到buffer+36地址处，之后便需要确定shellcode的地址，如果选择把shellcode放到buffer+100处,那么进入程序后，会先放到str变量中，如果能知道str变量的地址，那么便可以知道shellcode的地址。<br><img src="https://img-blog.csdnimg.cn/20201226170651472.png" alt="在这里插入图片描述"><br>得到了str的地址，那么此时shellcode的地址就是0xbfff12/26/2020eb77+100，即0xbfffebdb。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201226170709435.png" alt="在这里插入图片描述"><br>运行之后，可得root:</p>
+<p><img src="https://img-blog.csdnimg.cn/20201226170723786.png" alt="在这里插入图片描述"><br>之后可以通过运行setuid程序来得到真正的root：</p>
+<p><img src="https://img-blog.csdnimg.cn/20201226170742445.png" alt="在这里插入图片描述"></p>
+<h3 id="Task3-ASLR"><a href="#Task3-ASLR" class="headerlink" title="Task3:ASLR"></a>Task3:ASLR</h3><p>打开地址空间随机化，</p>
+<p><img src="https://img-blog.csdnimg.cn/20201226170829769.png" alt="在这里插入图片描述"><br>因为32为中，栈的基地址只有pow(2,19)种可能，可以暴力破解。</p>
+<p>执行如下脚本：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020122617090832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>执行结果如下:<br><img src="https://img-blog.csdnimg.cn/20201226170924143.png" alt="在这里插入图片描述"><br>运行70272次，成功打开shell。</p>
+<h3 id="Task4-stack-guard"><a href="#Task4-stack-guard" class="headerlink" title="Task4:stack guard"></a>Task4:stack guard</h3><p>执行如下指令：<br><img src="https://img-blog.csdnimg.cn/20201226170958317.png" alt="在这里插入图片描述"><br>打开stack guard机制<br><img src="https://img-blog.csdnimg.cn/20201226171012139.png" alt="在这里插入图片描述"><br>发现栈溢出被检测到了，原因就是覆盖了EBP附近的cancry标志，由系统检测到，报错。</p>
+<h3 id="Task5-不可执行栈"><a href="#Task5-不可执行栈" class="headerlink" title="Task5:不可执行栈"></a>Task5:不可执行栈</h3><p>使用如下指令关闭不可执行栈：<br><img src="https://img-blog.csdnimg.cn/20201226171055817.png" alt="在这里插入图片描述"><br>程序崩溃，进入gdb发现无法识别指令所代表的一串数据为合法地址。<br><img src="https://img-blog.csdnimg.cn/20201226171110429.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>即栈上不能包含指令，如果想要攻击的话，可以在上面覆盖某些gadget的地址，生成ROP链进行攻击。</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="https://i.loli.net/2020/12/22/Vn4iaZwcXKJA2pM.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/9.html">seedlab缓冲区溢出实验</a>
-	
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          李小混
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://lixiaohun.github.io/post/9.html" title="seedlab缓冲区溢出实验" target="_blank">https://lixiaohun.github.io/post/9.html</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -258,438 +381,143 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/post/9.html" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/8.html" class="archive-article-date">
-        <time datetime="2020-12-26T08:50:54.277Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/post/8.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">seedlab_shellshock攻击实验</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/8.html">seedlab_shellshock攻击实验</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlab%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">seedlab缓冲区溢出实验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.</span> <span class="toc-text">二、实验步骤与结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">首先进行初始设置：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1-%E8%BF%90%E8%A1%8Cshellcode"><span class="toc-number">1.2.2.</span> <span class="toc-text">Task1:运行shellcode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task2-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.2.3.</span> <span class="toc-text">Task2:利用漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-ASLR"><span class="toc-number">1.2.4.</span> <span class="toc-text">Task3:ASLR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task4-stack-guard"><span class="toc-number">1.2.5.</span> <span class="toc-text">Task4:stack guard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task5-%E4%B8%8D%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%A0%88"><span class="toc-number">1.2.6.</span> <span class="toc-text">Task5:不可执行栈</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/7.html" class="archive-article-date">
-        <time datetime="2020-12-26T07:42:09.553Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-
-        </div>
-    	 
+  <div id="gitment-ctn"></div>
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/7.html">seedlab实验防火墙攻击</a>
-	
-    </h1>
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
   
+  <script>
+    <!-- id: "seedlab缓冲区溢出实验" -->
+    var gitment = new Gitment({
+      id: "20201226171213",
+      owner: 'lixiaohun',
+      repo: 'lixiaohun.github.io',
+      oauth: {
+        client_id: 'fbdd08a6d090f32c952e',
+        client_secret: 'be3e36e2c6d45c43ff218c12df2dfa123eb1e40d',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/6.html" class="archive-article-date">
-        <time datetime="2020-12-26T06:54:34.174Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/6.html">seedlab实验本地DNS 攻击</a>
-	
-    </h1>
   
 
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/5.html" class="archive-article-date">
-        <time datetime="2020-12-26T06:18:06.406Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/5.html">seedlab实验TCP/IP Attack Lab</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/4.html" class="archive-article-date">
-        <time datetime="2020-12-26T05:07:35.669Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/4.html">seedlab实验ARP缓存中毒攻击</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/3.html" class="archive-article-date">
-        <time datetime="2020-12-26T04:20:07.705Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/3.html">seedlab实验Sniffing_Spoofing</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/0.html" class="archive-article-date">
-        <time datetime="2020-12-22T02:32:20.953Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/0.html">第一次实训wp</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CTF-PWN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/2.html" class="archive-article-date">
-        <time datetime="2020-12-21T08:37:24.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/2.html">seedlab生成安全随机数</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/1.html" class="archive-article-date">
-        <time datetime="2020-12-21T03:20:33.526Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/1.html">seedlab实验密码技术应用</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -727,8 +555,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

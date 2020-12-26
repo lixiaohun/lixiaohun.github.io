@@ -10,12 +10,12 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="seedlab_shellshock攻击实验一、实验目的完成题目指导书所给的任务">
+  <meta name="description" content="seedlab_shellshock攻击实验一、实验目的2014年9月24日，在Bash中发现了一个严重漏洞，称为Shellshock。这会影响许多系统。可以从远程或本地计算机轻松利用此漏洞。在本实验中，学生需要研究此攻击，以便他们可以了解Shellshock漏洞。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="seedlab_shellshock攻击实验">
 <meta property="og:url" content="http://example.com/post/8.html">
 <meta property="og:site_name" content="李小混的Blog">
-<meta property="og:description" content="seedlab_shellshock攻击实验一、实验目的完成题目指导书所给的任务">
+<meta property="og:description" content="seedlab_shellshock攻击实验一、实验目的2014年9月24日，在Bash中发现了一个严重漏洞，称为Shellshock。这会影响许多系统。可以从远程或本地计算机轻松利用此漏洞。在本实验中，学生需要研究此攻击，以便他们可以了解Shellshock漏洞。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201226164108917.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201226164204150.png">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020122616464120.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201226164653683.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-12-26T08:50:54.277Z">
-<meta property="article:modified_time" content="2020-12-26T09:00:09.167Z">
+<meta property="article:modified_time" content="2020-12-26T09:22:29.227Z">
 <meta property="article:author" content="李小混">
 <meta property="article:tag" content="seedlab">
 <meta property="article:tag" content="软件安全">
@@ -257,7 +257,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1k字</span>
+      <span class="post-count">1.1k字</span>
     </span>
   </span>
 
@@ -277,7 +277,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="seedlab-shellshock攻击实验"><a href="#seedlab-shellshock攻击实验" class="headerlink" title="seedlab_shellshock攻击实验"></a>seedlab_shellshock攻击实验</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>完成题目指导书所给的任务</p>
+    <h1 id="seedlab-shellshock攻击实验"><a href="#seedlab-shellshock攻击实验" class="headerlink" title="seedlab_shellshock攻击实验"></a>seedlab_shellshock攻击实验</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>2014年9月24日，在Bash中发现了一个严重漏洞，称为Shellshock。这会影响许多系统。可以从远程或本地计算机轻松利用此漏洞。在本实验中，学生需要研究此攻击，以便他们可以了解Shellshock漏洞。</p>
 <a id="more"></a>
 
 
@@ -296,7 +296,8 @@
 <p>/bin/cat /etc/passwd 这一段就是查看/etc/passwd的文件内容。至于为什么不直接用cat指令，的确打印不出来，应该是无法识别，可能无法共享环境变量。</p>
 <p> 运行之后即可打开/etc/passwd文件</p>
 <p><img src="https://img-blog.csdnimg.cn/20201226164537877.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>至于/etc/shadow文件是需要root权限打开的，这样执行无法拿到其内容。</p>
-<h3 id="Task5-使用-bin-bash运行任务3，4"><a href="#Task5-使用-bin-bash运行任务3，4" class="headerlink" title="Task5:使用/bin/bash运行任务3，4."></a>Task5:使用/bin/bash运行任务3，4.<img src="https://img-blog.csdnimg.cn/20201226164623414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></h3><p>把test.cgi改为上图的形式。<br>其实此时可以猜测任务三效果，就是跟之前一样，也可以修改一些http字段的值，因为任务三并不涉及漏洞利用。</p>
+<h3 id="Task5-使用-bin-bash运行任务3，4"><a href="#Task5-使用-bin-bash运行任务3，4" class="headerlink" title="Task5:使用/bin/bash运行任务3，4."></a>Task5:使用/bin/bash运行任务3，4.</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><p><img src="https://img-blog.csdnimg.cn/20201226164623414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>把test.cgi改为上图的形式。<br>其实此时可以猜测任务三效果，就是跟之前一样，也可以修改一些http字段的值，因为任务三并不涉及漏洞利用。</p>
 <p><img src="https://img-blog.csdnimg.cn/2020122616464120.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>运行之后User-Agent字段改变，同时其对应的环境变量也发生改变。<br>所以我们可以类似于bash_shellshock一样做攻击，进行任务4</p>
 <p><img src="https://img-blog.csdnimg.cn/20201226164653683.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>相同的输入下，直接打印出了环境变量。<br>发现HTTP_USER_AGENT变量一直到passwd，一长串全是变量，并不会转化为函数，并且分割符也不是“;”了。这样说明之前的漏洞被修复了。</p>
 <p>3.2问题：</p>
@@ -441,7 +442,7 @@
 
 <nav id="article-nav">
   
-    <a href="/post/8.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/post/9.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -479,7 +480,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlab-shellshock%E6%94%BB%E5%87%BB%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">seedlab_shellshock攻击实验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.</span> <span class="toc-text">二、实验步骤与结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1-%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E6%BC%8F%E6%B4%9E%E7%9A%84shell"><span class="toc-number">1.2.1.</span> <span class="toc-text">Task1:测试是否含有漏洞的shell.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task2-%E6%B5%8B%E8%AF%95curl"><span class="toc-number">1.2.2.</span> <span class="toc-text">Task2:测试curl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-%E5%BB%BA%E7%AB%8Btest-cgi"><span class="toc-number">1.2.3.</span> <span class="toc-text">Task3:建立test.cgi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task4-%E6%9E%84%E9%80%A0%E6%94%BB%E5%87%BB-%E8%8E%B7%E5%BE%97-etc-passwd"><span class="toc-number">1.2.4.</span> <span class="toc-text">Task4:构造攻击:获得&#x2F;etc&#x2F;passwd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task5-%E4%BD%BF%E7%94%A8-bin-bash%E8%BF%90%E8%A1%8C%E4%BB%BB%E5%8A%A13%EF%BC%8C4"><span class="toc-number">1.2.5.</span> <span class="toc-text">Task5:使用&#x2F;bin&#x2F;bash运行任务3，4.</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlab-shellshock%E6%94%BB%E5%87%BB%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">seedlab_shellshock攻击实验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.</span> <span class="toc-text">二、实验步骤与结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1-%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E6%BC%8F%E6%B4%9E%E7%9A%84shell"><span class="toc-number">1.2.1.</span> <span class="toc-text">Task1:测试是否含有漏洞的shell.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task2-%E6%B5%8B%E8%AF%95curl"><span class="toc-number">1.2.2.</span> <span class="toc-text">Task2:测试curl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-%E5%BB%BA%E7%AB%8Btest-cgi"><span class="toc-number">1.2.3.</span> <span class="toc-text">Task3:建立test.cgi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task4-%E6%9E%84%E9%80%A0%E6%94%BB%E5%87%BB-%E8%8E%B7%E5%BE%97-etc-passwd"><span class="toc-number">1.2.4.</span> <span class="toc-text">Task4:构造攻击:获得&#x2F;etc&#x2F;passwd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task5-%E4%BD%BF%E7%94%A8-bin-bash%E8%BF%90%E8%A1%8C%E4%BB%BB%E5%8A%A13%EF%BC%8C4"><span class="toc-number">1.2.5.</span> <span class="toc-text">Task5:使用&#x2F;bin&#x2F;bash运行任务3，4.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.6.</span> <span class="toc-text"></span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
