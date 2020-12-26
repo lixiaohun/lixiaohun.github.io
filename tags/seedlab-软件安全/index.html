@@ -6,50 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>seedlab实验本地DNS 攻击 | 李小混的Blog</title>
+  <title>Tag: -seedlab - 软件安全 | 李小混的Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="seedlab实验本地DNS 攻击一、实验目标1、学习使用DNS 工作原理2、学会对DNS 的主要攻击类型，搭建DNS，伪造回复，DNS 缓存中毒，DNS 授权攻击等">
-<meta property="og:type" content="article">
-<meta property="og:title" content="seedlab实验本地DNS 攻击">
-<meta property="og:url" content="http://example.com/post/6.html">
+  <meta name="description" content="个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="李小混的Blog">
+<meta property="og:url" content="http://example.com/tags/seedlab-%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="李小混的Blog">
-<meta property="og:description" content="seedlab实验本地DNS 攻击一、实验目标1、学习使用DNS 工作原理2、学会对DNS 的主要攻击类型，搭建DNS，伪造回复，DNS 缓存中毒，DNS 授权攻击等">
+<meta property="og:description" content="个人博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/eb6dc4df5e3fb016e083f224208b78ab.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d35cd029108e61b5a44244812abf2e6c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/79d31a1761ad826a6b5a03c433d2f115.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/46722ed476ccce34da7b6c471fbd3d68.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/756e9d4fb66d5b2c65e7b0d67163d0b1.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c424c4e3f01a8751cbce760898bfb89d.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144247986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020122614443951.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144456496.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144539854.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144558892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/202012261446151.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144654155.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144719472.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144736372.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144751696.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/202012261448550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144921823.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226144944270.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226145106923.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226145121722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226145135519.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226145151557.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226145227314.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226145247413.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226145307170.png">
-<meta property="article:published_time" content="2020-12-26T06:54:34.174Z">
-<meta property="article:modified_time" content="2020-12-26T06:54:04.215Z">
 <meta property="article:author" content="李小混">
-<meta property="article:tag" content="seedlab">
-<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="CTF,软件安全,网络安全,IOT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/eb6dc4df5e3fb016e083f224208b78ab.png">
   
     <link rel="alternative" href="/atom.xml" title="李小混的Blog" type="application/atom+xml">
   
@@ -238,308 +208,65 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-seedlabDNS" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/post/8.html" class="archive-article-date">
+        <time datetime="2020-12-26T08:50:54.277Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
+</a>
+
+        </div>
+    	 
   
-  
-    <h1 class="article-title" itemprop="name">
-      seedlab实验本地DNS 攻击
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/post/8.html">seellab_shellshock攻击实验</a>
+	
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/post/6.html" class="archive-article-date">
-        <time datetime="2020-12-26T06:54:34.174Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.3k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="seedlab实验本地DNS-攻击"><a href="#seedlab实验本地DNS-攻击" class="headerlink" title="seedlab实验本地DNS 攻击"></a>seedlab实验本地DNS 攻击</h1><h2 id="一、实验目标"><a href="#一、实验目标" class="headerlink" title="一、实验目标"></a>一、实验目标</h2><p>1、学习使用DNS 工作原理<br>2、学会对DNS 的主要攻击类型，搭建DNS，伪造回复，DNS 缓存中毒，DNS 授权<br>攻击等</p>
-<a id="more"></a>
-
-<h2 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h2><p>DNS 是Internet 的电话簿；它将主机名转换为IP 地址，反之亦然。这种转<br>换是通过DNS 解析完成的，该解析发生在幕后。DNS Pharming 攻击以各种方式<br>操纵此解析过程，目的是将用户误导到通常是恶意的替代目标。本实验重点研究<br>几个DNS Pharming 攻击技术。学生将首先设置和配置DNS 服务器，然后他们还<br>将在实验室环境内的目标上尝试各种DNS Pharming 攻击。</p>
-<h2 id="三、实验步骤及运行结果"><a href="#三、实验步骤及运行结果" class="headerlink" title="三、实验步骤及运行结果"></a>三、实验步骤及运行结果</h2><h3 id="Task1、Configure-the-User-Machine"><a href="#Task1、Configure-the-User-Machine" class="headerlink" title="Task1、Configure the User Machine"></a>Task1、Configure the User Machine</h3><p>首先需要配置用户机：<br>首先修改/etc/resolvconf/resolv.conf.d/head 文件，添加：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nameserver  <span class="number">10.0</span><span class="number">.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<p>之后运行指令：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resolvconf -u</span><br></pre></td></tr></table></figure>
-<p>使修改生效。</p>
-<h3 id="Task2．Set-up-a-Local-DNS-Server"><a href="#Task2．Set-up-a-Local-DNS-Server" class="headerlink" title="Task2．Set up a Local DNS Server"></a>Task2．Set up a Local DNS Server</h3><p>Step1：配置BIND9<br>首先在/etc/bind/named.conf.options 文件中的选项添加dump-file 条目：<br><img src="https://img-blog.csdnimg.cn/img_convert/eb6dc4df5e3fb016e083f224208b78ab.png"><br>发现已经添加。<br>上述选项制定了缓存内容应该转储到哪个文件。</p>
-<p>Step2:关闭DNSSEC<br>DNSSEC 的作用是抵御对DNS 服务器的欺骗攻击，要想实现需要把该机制关掉。<br>注释掉dnssec-validation 条目，并增加dnssec-enable 条目。</p>
-<p>Step3:开启DNS 服务器：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service bind9 restart</span><br></pre></td></tr></table></figure>
-<p>Step4:使用DNS 服务器<br>在用户机ping <a href="http://www.baidu.com，发现此时显示：">www.baidu.com，发现此时显示：</a><br><img src="https://img-blog.csdnimg.cn/img_convert/d35cd029108e61b5a44244812abf2e6c.png"><br>通过wireshark 抓包可以看出会有10.0.2.1 即DNS 服务器向外部服务器发送的<br>报文：<br><img src="https://img-blog.csdnimg.cn/img_convert/79d31a1761ad826a6b5a03c433d2f115.png"><br>此时已经使用10.0.2.1 为DNS 服务器了。</p>
-<h3 id="Task3-Host-a-Zone-in-the-Local-DNS-Server"><a href="#Task3-Host-a-Zone-in-the-Local-DNS-Server" class="headerlink" title="Task3: Host a Zone in the Local DNS Server"></a>Task3: Host a Zone in the Local DNS Server</h3><p>Step1：建立区域：<br>需要在DNS 服务器中创建两个区域，一个用来正向查找（主机-）IP），一个用来<br>反向查找（IP-）主机）：所以在/etc/bind/named.conf 文件中添加：<br><img src="https://img-blog.csdnimg.cn/img_convert/46722ed476ccce34da7b6c471fbd3d68.png"><br>Step2:配置正向查找区域文件<br><img src="https://img-blog.csdnimg.cn/img_convert/756e9d4fb66d5b2c65e7b0d67163d0b1.png"><br>Step3:配置反向文件<br>在/etc/bind/192.168.0.db 文件中设置如下内容：<br><img src="https://img-blog.csdnimg.cn/img_convert/c424c4e3f01a8751cbce760898bfb89d.png"><br>Step4:重启BIND 并测试<br>重启之后，在用户机输入：<br>dig <a href="http://www.example.com显示为：">www.example.com显示为：</a></p>
-<p><img src="https://img-blog.csdnimg.cn/20201226144247986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>可以看到，此时其对应的IP 为192.168.0.101，配置成功。</p>
-<h3 id="Task4-Modifying-the-Host-File"><a href="#Task4-Modifying-the-Host-File" class="headerlink" title="Task4:Modifying the Host File"></a>Task4:Modifying the Host File</h3><p>假设我作为攻击者已经拿到了用户机的shell，那么就可以修改用户机的<br>/etc/hosts 文件，添加如下条目：<br><img src="https://img-blog.csdnimg.cn/2020122614443951.png" alt="在这里插入图片描述"><br>此时，使用ping 指令，就会发现：<br><img src="https://img-blog.csdnimg.cn/20201226144456496.png" alt="在这里插入图片描述"><br>目的IP 为1.2.3.4，修改成功，这样修改是高于NDS 查询的。</p>
-<h3 id="Task5-Directly-Spoofing-Response-to-User"><a href="#Task5-Directly-Spoofing-Response-to-User" class="headerlink" title="Task5:Directly Spoofing Response to User"></a>Task5:Directly Spoofing Response to User</h3><p>但是实际上我并没有拿到用户机的shell，但是和用户机处于同一局域网中，所<br>以可以对其进行监听，当用户机发出DNS 询问时，对其进行DNS 伪造回复。<br>使用netwox 105 工具：<br><img src="https://img-blog.csdnimg.cn/20201226144539854.png" alt="在这里插入图片描述"><br>此时，令网站<a href="http://www.exam.com的查询结果为：5.6.7.8，查询该网站的域名服务器">www.exam.com的查询结果为：5.6.7.8，查询该网站的域名服务器</a><br>为：ns.attacker32.com IP 为：101.102.103.104（当然是伪造的）</p>
-<p>此时在用户机发出查询请求之后，攻击端伪造数据包如下：<br><img src="https://img-blog.csdnimg.cn/20201226144558892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>此时用户机可以看到DNS 查询结果为：<br><img src="https://img-blog.csdnimg.cn/202012261446151.png" alt="在这里插入图片描述"><br>伪造成功。</p>
-<h3 id="Task6-DNS-Cache-Poisoning-Attack"><a href="#Task6-DNS-Cache-Poisoning-Attack" class="headerlink" title="Task6: DNS Cache Poisoning Attack"></a>Task6: DNS Cache Poisoning Attack</h3><p>上面的攻击方式每一次都要伪造一个数据包，很麻烦，可以采用DNS 缓存中毒来</p>
-<p>进行攻击，那样在一段时间之内，都可以不用伪造。<br>此时攻击方伪造数据包为：<br><img src="https://img-blog.csdnimg.cn/20201226144654155.png" alt="在这里插入图片描述"><br>不发送ARP 的查询。</p>
-<p>之后，在用户机dig <a href="http://www.exam.com之后，可以看到已被伪造：">www.exam.com之后，可以看到已被伪造：</a><br><img src="https://img-blog.csdnimg.cn/20201226144719472.png" alt="在这里插入图片描述"><br>此时查看server 端DNS 缓存：<br><img src="https://img-blog.csdnimg.cn/20201226144736372.png" alt="在这里插入图片描述"><br>发现缓存已经被更新。<br>此时，就算是不伪造数据包，也可以查询到伪造的IP：<br><img src="https://img-blog.csdnimg.cn/20201226144751696.png" alt="在这里插入图片描述"><br>攻击成功。</p>
-<h3 id="Task-7-DNS-Cache-Poisoning-Targeting-the-Authority-Section"><a href="#Task-7-DNS-Cache-Poisoning-Targeting-the-Authority-Section" class="headerlink" title="Task 7: DNS Cache Poisoning: Targeting the Authority Section"></a>Task 7: DNS Cache Poisoning: Targeting the Authority Section</h3><p>上面的方法只有一个域名的缓存，如果想要得到授权对一个域进行攻击的话，就需要配置一个合法的IP.</p>
-<p>在这一步就需要使用scapy:<br>编写脚本如下：</p>
-<p><img src="https://img-blog.csdnimg.cn/202012261448550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>此时使用dig 查询之后，得到被伪造的对应的IP，查看server 的DNS 缓存信息：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226144921823.png" alt="在这里插入图片描述"><br>发现此时缓存中写入的就是一个域。<br>之后，使用dig 查询hhh.exam.com，<br>DNS 服务器不会进行迭代查询，而是直接返回缓存纪录，发现回送的报文中:</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226144944270.png" alt="在这里插入图片描述"><br>并没有回答，因为ns.attacker32.com 并不是我们能掌控的权威服务器。</p>
-<h3 id="Task-8-Targeting-Another-Domain"><a href="#Task-8-Targeting-Another-Domain" class="headerlink" title="Task 8: Targeting Another Domain"></a>Task 8: Targeting Another Domain</h3><p>尝试为DNS 添加两条缓存域，效果如下：<br><img src="https://img-blog.csdnimg.cn/20201226145106923.png" alt="在这里插入图片描述"><br>编写脚本：<br><img src="https://img-blog.csdnimg.cn/20201226145121722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在进行dig 之后，发现server 中只留下了一条缓存域条目：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226145135519.png" alt="在这里插入图片描述"><br>查看此时包中数据为：<br><img src="https://img-blog.csdnimg.cn/20201226145151557.png" alt="在这里插入图片描述"><br>发现留下的是发送包中的第一条。</p>
-<h3 id="Task-9-Targeting-the-Additional-Section"><a href="#Task-9-Targeting-the-Additional-Section" class="headerlink" title="Task 9: Targeting the Additional Section"></a>Task 9: Targeting the Additional Section</h3><p>为一个域设置多个查询条目，为那些查询条目分配对应的DNS IP，效果如下：<br><img src="https://img-blog.csdnimg.cn/20201226145227314.png" alt="在这里插入图片描述"><br>编写脚本：<br><img src="https://img-blog.csdnimg.cn/20201226145247413.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现server 中只留下了和权威服务器有关的IP，而<a target="_blank" rel="noopener" href="http://www.facebook.com并没有被/">www.facebook.com并没有被</a><br>留下来：<br><img src="https://img-blog.csdnimg.cn/20201226145307170.png" alt="在这里插入图片描述"><br>这是由于additional 中的记录只有与authority 中匹配，dns 缓存才会将其收入到dns 的缓存中.</p>
-
-    
-
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="https://i.loli.net/2020/12/22/Vn4iaZwcXKJA2pM.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          李小混
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="https://lixiaohun.github.io/post/6.html" title="seedlab实验本地DNS 攻击" target="_blank">https://lixiaohun.github.io/post/6.html</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">seedlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-seedlab - 软件安全</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
+          
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/post/6.html" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/post/7.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          seedlab实验防火墙攻击
-        
-      </div>
-    </a>
   
   
-    <a href="/post/5.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">seedlab实验TCP/IP Attack Lab</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlab%E5%AE%9E%E9%AA%8C%E6%9C%AC%E5%9C%B0DNS-%E6%94%BB%E5%87%BB"><span class="toc-number">1.</span> <span class="toc-text">seedlab实验本地DNS 攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">一、实验目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">二、实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.3.</span> <span class="toc-text">三、实验步骤及运行结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1%E3%80%81Configure-the-User-Machine"><span class="toc-number">1.3.1.</span> <span class="toc-text">Task1、Configure the User Machine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task2%EF%BC%8ESet-up-a-Local-DNS-Server"><span class="toc-number">1.3.2.</span> <span class="toc-text">Task2．Set up a Local DNS Server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-Host-a-Zone-in-the-Local-DNS-Server"><span class="toc-number">1.3.3.</span> <span class="toc-text">Task3: Host a Zone in the Local DNS Server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task4-Modifying-the-Host-File"><span class="toc-number">1.3.4.</span> <span class="toc-text">Task4:Modifying the Host File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task5-Directly-Spoofing-Response-to-User"><span class="toc-number">1.3.5.</span> <span class="toc-text">Task5:Directly Spoofing Response to User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task6-DNS-Cache-Poisoning-Attack"><span class="toc-number">1.3.6.</span> <span class="toc-text">Task6: DNS Cache Poisoning Attack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task-7-DNS-Cache-Poisoning-Targeting-the-Authority-Section"><span class="toc-number">1.3.7.</span> <span class="toc-text">Task 7: DNS Cache Poisoning: Targeting the Authority Section</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task-8-Targeting-Another-Domain"><span class="toc-number">1.3.8.</span> <span class="toc-text">Task 8: Targeting Another Domain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task-9-Targeting-the-Additional-Section"><span class="toc-number">1.3.9.</span> <span class="toc-text">Task 9: Targeting the Additional Section</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-  
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
-  
-  <script>
-    <!-- id: "seedlab实验本地DNS 攻击" -->
-    var gitment = new Gitment({
-      id: "20201226145434",
-      owner: 'lixiaohun',
-      repo: 'lixiaohun.github.io',
-      oauth: {
-        client_id: 'fbdd08a6d090f32c952e',
-        client_secret: 'be3e36e2c6d45c43ff218c12df2dfa123eb1e40d',
-      },
-    })
-    gitment.render('gitment-ctn')
-  </script>
-
-
+    </div></section>
   
 
+    
 
 
           </div>
@@ -577,9 +304,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
