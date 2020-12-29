@@ -19,7 +19,6 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/251ce60a19f04522c230d4b6d80ca8a7.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c9bdeefa1c2678686305c730d7d3fe76.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/62f8c38678dd6bb53bfe644e11e43df0.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/626dd5c532fd3f80bc9e72b829e5ed38.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b424270f5f2fdced08cd919c104eae43.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/a7be1cbdf48c1473a9c29ee054fc7742.png">
@@ -48,7 +47,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2861614f301193c3eac2d35e1420cf73.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/61b4ef72cfab7f19dcc311549e65d195.png">
 <meta property="article:published_time" content="2020-12-26T06:18:06.406Z">
-<meta property="article:modified_time" content="2020-12-26T06:23:40.679Z">
+<meta property="article:modified_time" content="2020-12-29T07:05:25.947Z">
 <meta property="article:author" content="李小混">
 <meta property="article:tag" content="seedlab">
 <meta property="article:tag" content="网络安全">
@@ -304,8 +303,7 @@
 <p>此时连接成功。</p>
 <p>观察server 中的TCP 连接状态：</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/c9bdeefa1c2678686305c730d7d3fe76.png"></p>
-<p>并无半连接状态的连接。<br>之后首先关闭系统的SYN 防御机制：</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/62f8c38678dd6bb53bfe644e11e43df0.png"></p>
+<p>并无半连接状态的连接。</p>
 <p>然后在攻击端执行如下指令：</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/626dd5c532fd3f80bc9e72b829e5ed38.png"></p>
 <p>使用netwox 中的76 工具对10.0.2.1（server）进行，-s 意味着在ip4/ip6 对<br>数据包进行伪造，而不是链路层。<br>此时查看队列：</p>
@@ -735,15 +733,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CTF-PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">seedlab</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CTF-PWN</a>
               </li>
              
               <li class="article-tag-list-item">
