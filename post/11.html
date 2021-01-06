@@ -6,59 +6,43 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>seedlab实验防火墙攻击 | 李小混的Blog</title>
+  <title>seedlabCSRF跨站请求伪造 | 李小混的Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="seedlab实验防火墙攻击一、实验目标1、学习使用防火墙工作原理2、了解数据包过滤器，状态防火墙，应用防火墙等3、学会一些防火墙绕过方式">
+  <meta name="description" content="seedlabCSRF跨站请求伪造一、实验目的本实验的目的是帮助学生理解跨站请求伪造（CSRF或XSRF）攻击。CSRF攻击涉及受害者用户，受信任的站点和恶意站点。受害用户在访问恶意站点时会与受信任的站点进行活动会话。恶意站点将对受信任站点的HTTP请求注入受害者用户会话，从而造成损害。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="seedlab实验防火墙攻击">
-<meta property="og:url" content="http://example.com/post/7.html">
+<meta property="og:title" content="seedlabCSRF跨站请求伪造">
+<meta property="og:url" content="http://example.com/post/11.html">
 <meta property="og:site_name" content="李小混的Blog">
-<meta property="og:description" content="seedlab实验防火墙攻击一、实验目标1、学习使用防火墙工作原理2、了解数据包过滤器，状态防火墙，应用防火墙等3、学会一些防火墙绕过方式">
+<meta property="og:description" content="seedlabCSRF跨站请求伪造一、实验目的本实验的目的是帮助学生理解跨站请求伪造（CSRF或XSRF）攻击。CSRF攻击涉及受害者用户，受信任的站点和恶意站点。受害用户在访问恶意站点时会与受信任的站点进行活动会话。恶意站点将对受信任站点的HTTP请求注入受害者用户会话，从而造成损害。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152735966.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152753428.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152803721.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152817281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152828278.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152846324.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152858699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152916102.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226152932857.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153027189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153124127.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020122615313772.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153151685.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153205179.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153218753.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153233521.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153246256.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153321297.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020122615333874.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153347682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153429906.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153457511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153522115.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153534679.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153601955.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153617805.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153644115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153659612.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153710987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153725843.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153817886.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153846685.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153903253.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153918647.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201226153933781.png">
-<meta property="article:published_time" content="2020-12-26T07:42:09.553Z">
-<meta property="article:modified_time" content="2020-12-26T07:40:09.594Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143035856.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143109543.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143137109.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143226824.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143254142.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143411950.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021010614352914.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143555418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143705950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143818672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143832889.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/202101061438462.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143924671.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106143947827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106144009847.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106144023828.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021010614404117.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106144053207.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210106144102127.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2021-01-06T06:41:33.422Z">
+<meta property="article:modified_time" content="2021-01-06T06:41:40.736Z">
 <meta property="article:author" content="李小混">
 <meta property="article:tag" content="seedlab">
-<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="软件安全">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201226152735966.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210106143035856.png">
   
     <link rel="alternative" href="/atom.xml" title="李小混的Blog" type="application/atom+xml">
   
@@ -247,14 +231,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-seedlab防火墙攻击" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-seedlabCSRF跨站请求伪造" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      seedlab实验防火墙攻击
+      seedlabCSRF跨站请求伪造
     </h1>
   
 
@@ -266,8 +250,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/post/7.html" class="archive-article-date">
-        <time datetime="2020-12-26T07:42:09.553Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
+<a href="/post/11.html" class="archive-article-date">
+        <time datetime="2021-01-06T06:41:33.422Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-06</time>
 </a>
 
   
@@ -280,7 +264,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.9k字</span>
+      <span class="post-count">942字</span>
     </span>
   </span>
 
@@ -289,7 +273,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -300,45 +284,42 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="seedlab实验防火墙攻击"><a href="#seedlab实验防火墙攻击" class="headerlink" title="seedlab实验防火墙攻击"></a>seedlab实验防火墙攻击</h1><h2 id="一、实验目标"><a href="#一、实验目标" class="headerlink" title="一、实验目标"></a>一、实验目标</h2><p>1、学习使用防火墙工作原理<br>2、了解数据包过滤器，状态防火墙，应用防火墙等<br>3、学会一些防火墙绕过方式</p>
+    <h1 id="seedlabCSRF跨站请求伪造"><a href="#seedlabCSRF跨站请求伪造" class="headerlink" title="seedlabCSRF跨站请求伪造"></a>seedlabCSRF跨站请求伪造</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>本实验的目的是帮助学生理解跨站请求伪造（CSRF或XSRF）攻击。CSRF攻击涉及受害者用户，受信任的站点和恶意站点。受害用户在访问恶意站点时会与受信任的站点进行活动会话。恶意站点将对受信任站点的HTTP请求注入受害者用户会话，从而造成损害。</p>
 <a id="more"></a>
 
-<h2 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h2><p>本实验的学习目标是让学生通过玩防火墙软件并实现简化的数据包<br>过滤防火墙来了解防火墙如何工作。防火墙有几种类型。在本实验中，<br>我们重点介绍两种类型，数据包筛选器和应用程序防火墙。<br>数据包过滤器通过检查数据包来起作用；如果数据包与数据包过滤器<br>的规则集匹配，则数据包过滤器将丢弃数据包或将其转发，具体取决<br>于规则的内容。数据包过滤器通常是无状态的；它们仅基于该数据包<br>中包含的信息过滤每个数据包，而无需注意数据包是否为现有流量的<br>一部分。数据包过滤器通常结合使用数据包的源地址和目标地址，其<br>协议以及端口号（对于TCP 和UDP 通信）。<br>应用防火墙在应用层工作。广泛使用的应用程序防火墙是Web 代理，<br>它主要用于Web 流量的出口过滤。在本实验中，学生将同时使用两种<br>类型的防火墙，并通过实施某些关键功能来了解防火墙的工作原理。</p>
-<h2 id="三、实验步骤及运行结果"><a href="#三、实验步骤及运行结果" class="headerlink" title="三、实验步骤及运行结果"></a>三、实验步骤及运行结果</h2><h3 id="Task1、Using-Firewal"><a href="#Task1、Using-Firewal" class="headerlink" title="Task1、Using Firewal"></a>Task1、Using Firewal</h3><p>此任务都是在A 下做的。<br>首先阻止A telnet 连接B：<br>首先A 是可以连接B 的：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226152735966.png" alt="在这里插入图片描述"><br>之后输入指令：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226152753428.png" alt="在这里插入图片描述"><br>意思就是禁掉目的IP 为10.0.2.11 的端口为23 的tcp 报文。<br>等待一分钟后连接不上：<br><img src="https://img-blog.csdnimg.cn/20201226152803721.png" alt="在这里插入图片描述"><br>之后阻止B 连接A：<br>首先B 是可以连接A 的：<br><img src="https://img-blog.csdnimg.cn/20201226152817281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>之后在A 上输入指令：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226152828278.png" alt="在这里插入图片描述"><br>意思就是禁掉源IP 为10.0.2.11 且端口为23 的报文。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226152846324.png" alt="在这里插入图片描述"><br>此时，等待一段时间之后，无法连接上。<br>之后，阻止A 连接某网站。<br>首先，程序可以访问百度网站：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226152858699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>之后输入指令：<br><img src="https://img-blog.csdnimg.cn/20201226152916102.png" alt="在这里插入图片描述"><br>39.156.66.18 即为该网站IP，可以使用ping 得到。<br>禁用掉发送往该IP 的目的端口为443（https 协议）的数据包。<br>之后再次访问百度：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226152932857.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>无法登录，阻止成功。</p>
-<h3 id="Task2-Implementing-a-Simple-Firewall"><a href="#Task2-Implementing-a-Simple-Firewall" class="headerlink" title="Task2: Implementing a Simple Firewall"></a>Task2: Implementing a Simple Firewall</h3><p>使用LKM 和Netfilter 来实现内核加载模块。<br>设定过滤规则为：<br><img src="https://img-blog.csdnimg.cn/20201226153027189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>丢弃21，22，23 端口的数据包即禁止telnet，ssh，ftp 服务<br>禁止10.0.2.11,10.0.2.7 的ICMP 数据包，即无法ping 通这两台主<br>机。一共五条规则。<br>代码为</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/kernel.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/netfilter.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/netfilter_ipv4.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/ip.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/tcp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">nf_hook_ops</span> <span class="title">telnetFilterHook</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">telnetFilter</span><span class="params">(<span class="keyword">void</span> *priv, struct sk_buff * skb, <span class="keyword">const</span> struct nf_hook_state *state)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">iphdr</span> *<span class="title">iph</span>;</span></span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">tcphdr</span> *<span class="title">tcph</span>;</span></span><br><span class="line">            iph = ip_hdr(skb);</span><br><span class="line">            tcph = (<span class="keyword">void</span> *)iph+iph-&gt;ihl*<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>((iph-&gt;protocol == IPPROTO_TCP &amp;&amp; (tcph-&gt;dest == htons(<span class="number">23</span>) </span><br><span class="line">              || tcph-&gt;dest== htons(<span class="number">22</span>) </span><br><span class="line">              || tcph-&gt;dest== htons(<span class="number">21</span>)))  </span><br><span class="line">              || (iph-&gt;protocol == IPPROTO_ICMP &amp;&amp;((((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">0</span>]==<span class="number">10</span> &amp;&amp;  </span><br><span class="line">                 ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">1</span>]==<span class="number">0</span> </span><br><span class="line">                 &amp;&amp; ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">2</span>]==<span class="number">2</span> &amp;&amp; ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">3</span>]==<span class="number">11</span>)</span><br><span class="line">              || (((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">0</span>]==<span class="number">10</span> &amp;&amp;  ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">1</span>]==<span class="number">0</span> </span><br><span class="line">                 &amp;&amp; ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">2</span>]==<span class="number">2</span> &amp;&amp; ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">3</span>]==<span class="number">7</span>))))&#123;</span><br><span class="line">                printk(KERN_INFO <span class="string">&quot;Dropping telent packdt to %d.%d.%d.%d\n&quot;</span>,</span><br><span class="line">                ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">0</span>],</span><br><span class="line">                ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">1</span>],</span><br><span class="line">                ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">2</span>],</span><br><span class="line">                ((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)&amp;iph-&gt;daddr)[<span class="number">3</span>]);</span><br><span class="line">                <span class="keyword">return</span> NF_DROP;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> NF_ACCEPT;</span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeFilter</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    printk(KERN_INFO <span class="string">&quot;Telnet filter has been removed.\n&quot;</span>);</span><br><span class="line">    nf_unregister_net_hook(&amp;init_net,&amp;telnetFilterHook);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">setUpFilter</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    telnetFilterHook.hook = telnetFilter;</span><br><span class="line">    telnetFilterHook.hooknum = NF_INET_POST_ROUTING;</span><br><span class="line">    telnetFilterHook.pf = PF_INET;</span><br><span class="line">    telnetFilterHook.priority = NF_IP_PRI_FILTER;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(nf_register_net_hook(&amp;init_net,&amp;telnetFilterHook)!=<span class="number">0</span>)&#123;</span><br><span class="line">        printk(KERN_WARNING <span class="string">&quot;register Telnet filter hook error!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">goto</span> err;</span><br><span class="line">    &#125;</span><br><span class="line">    printk(KERN_INFO <span class="string">&quot;Registering a Telnet filter&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">err:</span><br><span class="line">    removeFilter();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module_init(setUpFilter);</span><br><span class="line">module_exit(removeFilter);</span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;GPL&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>代码写完后，需要使用make 来编译内核模块：<br><img src="https://img-blog.csdnimg.cn/20201226153124127.png" alt="在这里插入图片描述"><br>编译完毕后，载入内核中：</p>
-<p><img src="https://img-blog.csdnimg.cn/2020122615313772.png" alt="在这里插入图片描述"><br>之后使用telnet 连接，ssh 连接：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153151685.png" alt="在这里插入图片描述"><br>等待几分钟发现无法连接。说明telnet，ssh 已被禁掉。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153205179.png" alt="在这里插入图片描述"><br>发现ftp 已被禁掉。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153218753.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ping 向设定的两台主机,发现都已经被禁止ping 了。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153233521.png" alt="在这里插入图片描述"><br>但是依旧可以向其他IP ping。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153246256.png" alt="在这里插入图片描述"><br>之后，卸载该模块，发现telnet 重用。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153321297.png" alt="在这里插入图片描述"><br>发现ssh 恢复</p>
-<p><img src="https://img-blog.csdnimg.cn/2020122615333874.png" alt="在这里插入图片描述"><br>发现ftp 重用恢复。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153347682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Ping 这两台主机也可以ping 通，unreachable 仅仅是没开主机而已，<br>不再像之前的被禁止了。</p>
-<h3 id="Task3-Evading-Egress-Filtering"><a href="#Task3-Evading-Egress-Filtering" class="headerlink" title="Task3: Evading Egress Filtering"></a>Task3: Evading Egress Filtering</h3><p>本任务：</p>
-<p>内部主机A：10.0.2.4（中间转发主机）<br>外部主机B：10.0.2.11<br>内部主机C：10.0.2.1</p>
-<p>首先在A 上设定两条规则</p>
-<p>1、禁止外部主机的telnet 连接<br>在本任务中，即禁用掉10.0.2.11 的telnet 连接。<br>类似task1，<br><img src="https://img-blog.csdnimg.cn/20201226153429906.png" alt="在这里插入图片描述"><br>此时便说明已经无法连接。</p>
-<p>2、禁用向某IP 的流量，即禁止访问某网站</p>
-<p>类似task1，禁止访问百度：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153457511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Task 3.a: Telnet to Machine B through the firewall</p>
-<p>首先在外部主机B 中执行如下命令，以建立它8000 端口到A 的SSH<br>端口间建立一条SSH 隧道。这条隧道把B 的8000 端口接收到的数据<br>9<br>转发到C 的23 端口上。即：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153522115.png" alt="在这里插入图片描述"><br>建立隧道之后，在B telnet 连接本地8000 端口即可成功登陆C：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153534679.png" alt="在这里插入图片描述"><br>观察IP，为C 的IP：10.0.2.1<br><img src="https://img-blog.csdnimg.cn/20201226153601955.png" alt="在这里插入图片描述"><br>此时绕过防火墙成功。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153617805.png" alt="在这里插入图片描述"><br>通过wireshark 抓包可看出：<br>外部主机B 先和A 通过SSH 通信，之后的telnet 的包全部都是在内<br>部A 和C 之间产生的，A 会把B 的请求发给C，C 以为是A 的请求，<br>因为C 已知与A 通信，之后A 再把结果返回给B。</p>
-<p>Task 3.b: Connect to 百度 using SSH Tunnel</p>
-<p>使用动态端口转发<br>首先建立一条本地9000 端口到外部主机的一条SSH 隧道，但不指定<br>IP，而是在浏览器去设置访问的代理为localhost:9000.此处和静态<br>代理不同，web 代理仅仅转发web 数据，而在浏览器设置代理是在<br>TCP/IP 层，比前一种方法更通用。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153644115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>问题1、之后就可以使用本地代理访问百度了：<br><img src="https://img-blog.csdnimg.cn/20201226153659612.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>问题2、断开ssh，清空缓存，刷新页面：<br><img src="https://img-blog.csdnimg.cn/20201226153710987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>显然，无法访问。<br>问题3、再次连接ssh，并访问网站，观察现象<br>显然，再次访问成功<br>问题4、解释现象，为什么可以绕过：</p>
-<p><img src="https://img-blog.csdnimg.cn/20201226153725843.png" alt="在这里插入图片描述"><br>抓包可以看到，内网主机并没有和网站进行过交互，便无法被防火墙<br>检测。内网主机与外网主机进行交互，与百度交互的是外网主机。由<br>外网主机把信息带回给内网。</p>
-<h3 id="Task4-Evading-Ingress-Filtering"><a href="#Task4-Evading-Ingress-Filtering" class="headerlink" title="Task4: Evading Ingress Filtering"></a>Task4: Evading Ingress Filtering</h3><p>先在内部主机A 搞防火墙，禁止外界访问80 与22 端口，即禁掉http<br>和ssh 服务。<br><img src="https://img-blog.csdnimg.cn/20201226153817886.png" alt="在这里插入图片描述"><br>即外部主机无法连接该主机的WEBserver 和ssh.<br>因为我是有A 的控制权限的，所以可以在A 建立一个反向的隧道<br>输入指令如下：<br><img src="https://img-blog.csdnimg.cn/20201226153846685.png" alt="在这里插入图片描述"><br>即将内部主机向外部主机建立ssh 连接，并且把10.0.2.11 的8000<br>端口的数据发向本机的80 端口<br>之后在本主机进行telnet 连接本地8000 端口，即可使用内部主机的<br>web 服务，即http 服务。<br><img src="https://img-blog.csdnimg.cn/20201226153903253.png" alt="在这里插入图片描述"><br>绕过成功。<br>通过wireshark 抓包得：<br>建立连接时：<br><img src="https://img-blog.csdnimg.cn/20201226153918647.png" alt="在这里插入图片描述"><br>先在本地两个端口发送数据包，之后8000 端口将数据发送到<br>10.0.2.4 的22 端口，即使用之前的ssh 进行连接，之后数据返回，<br>再次本机通信。<br>http 请求时：<br><img src="https://img-blog.csdnimg.cn/20201226153933781.png" alt="在这里插入图片描述"><br>在最后回显时，发现使用了http 协议，使用成功。</p>
+
+
+<h2 id="二、实验步骤与结果"><a href="#二、实验步骤与结果" class="headerlink" title="二、实验步骤与结果"></a>二、实验步骤与结果</h2><h3 id="Task1-发布恶意消息以显示警报窗口"><a href="#Task1-发布恶意消息以显示警报窗口" class="headerlink" title="Task1:发布恶意消息以显示警报窗口"></a>Task1:发布恶意消息以显示警报窗口</h3><p>1、在samy个人的资料的Brief description区域放入如下代码：<br><img src="https://img-blog.csdnimg.cn/20210106143035856.png" alt="在这里插入图片描述"><br>之后，如果有人访问了Samy的主页，这段代码会执行，并且显示XSS消息.</p>
+<p>下图是登录Alice之后访问samy的主页后的结果：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143109543.png" alt="在这里插入图片描述"><br>实验能够成功的原因就是关闭了Elgg的防护策略。</p>
+<p>此外，如果网站的某个漏洞窗口被限制了输入长度导致大文本的代码无法输入，可以使用如下代码：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143137109.png" alt="在这里插入图片描述"><br>将某个路径下的js文件作为输入。</p>
+<h3 id="Task2-发布恶意消息以显示Cookie"><a href="#Task2-发布恶意消息以显示Cookie" class="headerlink" title="Task2:发布恶意消息以显示Cookie"></a>Task2:发布恶意消息以显示Cookie</h3><p>显示cookie跟上一个任务一样，只需把输入代码改为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143226824.png" alt="在这里插入图片描述"><br>即可。</p>
+<p>此时通过Alice的账户来访问Samy的主页即可得到如下内容：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143254142.png" alt="在这里插入图片描述"></p>
+<h3 id="Task3-从受害者的机器里窃取cookie"><a href="#Task3-从受害者的机器里窃取cookie" class="headerlink" title="Task3:从受害者的机器里窃取cookie"></a>Task3:从受害者的机器里窃取cookie</h3><p>此实验需要在受害者访问页面的时候，向攻击者的主机发送cookie的信息。所以可以在</p>
+<p>samy的网站输入如下语句：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143411950.png" alt="在这里插入图片描述"><br>此代码就是向IP地址为10.1.2.5的主机5555发送包含了cookie的值的HTTP报文。</p>
+<p>之后，攻击者可以在自身主机开启5555端口的监听，一旦其他人访问该主页，其cookie</p>
+<p>就可以回显给攻击者。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l <span class="number">5555</span> -v</span><br></pre></td></tr></table></figure>
+<p>如果该实验是在一个主机中做的，那么可以把上述代码的IP地址换为本地地址127.0.0.1.</p>
+<p>之后开启对本地的监听。</p>
+<p>输入为：</p>
+<p><img src="https://img-blog.csdnimg.cn/2021010614352914.png" alt="在这里插入图片描述"><br>Alice访问它时，攻击者回显cookie：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143555418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>成功。</p>
+<h3 id="Task4：成为受害者的好友"><a href="#Task4：成为受害者的好友" class="headerlink" title="Task4：成为受害者的好友"></a>Task4：成为受害者的好友</h3><p>首先使用HTTP Header Live查看添加samy好友的url.</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143705950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现url为：<a target="_blank" rel="noopener" href="http://www.xsslabelgg.com/action/friends/add?friend=47&amp;ts...&amp;token">http://www.xsslabelgg.com/action/friends/add?friend=47&amp;ts...&amp;token</a>…</p>
+<p>要想访问页面的时候添加好友，那么需要在访问页面的时候发送好友请求。大体的代码指导书已经给出来了，只是缺少必要的url,可以根据上方分析得到的url来进行填写。填之前需要点击“Edit HTML”来进行输入。否则网页会把输入的内容自动完善成HTML的语言，也就无法被识别为js代码。<br>可以在给出的代码中填入url:<br>var sendurl=”<a target="_blank" rel="noopener" href="http://www.xsslabelgg.com/action/friends/add&quot;">http://www.xsslabelgg.com/action/friends/add&quot;</a> + “?friend=47” + token +ts ;<br><img src="https://img-blog.csdnimg.cn/20210106143818672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>保存后，使用Alice访问该主页</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143832889.png" alt="在这里插入图片描述"><br>此外，保存网页之后，samy也加了自己为好友：<br><img src="https://img-blog.csdnimg.cn/202101061438462.png" alt="在这里插入图片描述"><br>说明实验成功。</p>
+<p>问题1：因为ts,token这两个值是为了防范CSRF攻击而嵌在页面中的，没有这两个变量请求便不会通过，</p>
+<p>问题2：不会，因为输入的文本会被添加一些html的符号转化为html格式的语言，不会被执行。</p>
+<h3 id="Task7-对策"><a href="#Task7-对策" class="headerlink" title="Task7:对策"></a>Task7:对策</h3><p>1、只打开HTMLawed对策，观察现象。<br><img src="https://img-blog.csdnimg.cn/20210106143924671.png" alt="在这里插入图片描述"><br>此时在samy的个人主页上显示了我们部分输入的消息，并没有转化为js代码执行，而把<script></script>过滤掉了，只显示中间的部分。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106143947827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>2、同时打开两种保护机制：</p>
+<p>Text.php:<br><img src="https://img-blog.csdnimg.cn/20210106144009847.png" alt="在这里插入图片描述"><br>url.php:<br><img src="https://img-blog.csdnimg.cn/20210106144023828.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Dropdown.php</p>
+<p><img src="https://img-blog.csdnimg.cn/2021010614404117.png" alt="在这里插入图片描述"><br>Email.php</p>
+<p><img src="https://img-blog.csdnimg.cn/20210106144053207.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210106144102127.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzMzODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>同时开两种保护机制其实也是和第一问显示一样的，不过处理的过程不一样，因为如果返回samy的输入窗口的话，会发现很多符号都被替换掉了。</p>
 
     
 
@@ -380,7 +361,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://lixiaohun.github.io/post/7.html" title="seedlab实验防火墙攻击" target="_blank">https://lixiaohun.github.io/post/7.html</a>
+          <a href="https://lixiaohun.github.io/post/11.html" title="seedlabCSRF跨站请求伪造" target="_blank">https://lixiaohun.github.io/post/11.html</a>
         </li>
         
         <li>
@@ -406,7 +387,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件安全</a>
         		</li>
       		
 		</ul>
@@ -462,7 +443,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/post/7.html" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/post/11.html" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -477,18 +458,9 @@
 
 <nav id="article-nav">
   
-    <a href="/post/8.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          seedlab_shellshock攻击实验
-        
-      </div>
-    </a>
   
-  
-    <a href="/post/6.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">seedlab实验本地DNS 攻击</div>
+    <a href="/post/10.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">seedlabSQL注入攻击实验</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -515,7 +487,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlab%E5%AE%9E%E9%AA%8C%E9%98%B2%E7%81%AB%E5%A2%99%E6%94%BB%E5%87%BB"><span class="toc-number">1.</span> <span class="toc-text">seedlab实验防火墙攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">一、实验目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">二、实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E5%8F%8A%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.3.</span> <span class="toc-text">三、实验步骤及运行结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1%E3%80%81Using-Firewal"><span class="toc-number">1.3.1.</span> <span class="toc-text">Task1、Using Firewal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task2-Implementing-a-Simple-Firewall"><span class="toc-number">1.3.2.</span> <span class="toc-text">Task2: Implementing a Simple Firewall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-Evading-Egress-Filtering"><span class="toc-number">1.3.3.</span> <span class="toc-text">Task3: Evading Egress Filtering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task4-Evading-Ingress-Filtering"><span class="toc-number">1.3.4.</span> <span class="toc-text">Task4: Evading Ingress Filtering</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#seedlabCSRF%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0"><span class="toc-number">1.</span> <span class="toc-text">seedlabCSRF跨站请求伪造</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.</span> <span class="toc-text">二、实验步骤与结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Task1-%E5%8F%91%E5%B8%83%E6%81%B6%E6%84%8F%E6%B6%88%E6%81%AF%E4%BB%A5%E6%98%BE%E7%A4%BA%E8%AD%A6%E6%8A%A5%E7%AA%97%E5%8F%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">Task1:发布恶意消息以显示警报窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task2-%E5%8F%91%E5%B8%83%E6%81%B6%E6%84%8F%E6%B6%88%E6%81%AF%E4%BB%A5%E6%98%BE%E7%A4%BACookie"><span class="toc-number">1.2.2.</span> <span class="toc-text">Task2:发布恶意消息以显示Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task3-%E4%BB%8E%E5%8F%97%E5%AE%B3%E8%80%85%E7%9A%84%E6%9C%BA%E5%99%A8%E9%87%8C%E7%AA%83%E5%8F%96cookie"><span class="toc-number">1.2.3.</span> <span class="toc-text">Task3:从受害者的机器里窃取cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task4%EF%BC%9A%E6%88%90%E4%B8%BA%E5%8F%97%E5%AE%B3%E8%80%85%E7%9A%84%E5%A5%BD%E5%8F%8B"><span class="toc-number">1.2.4.</span> <span class="toc-text">Task4：成为受害者的好友</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task7-%E5%AF%B9%E7%AD%96"><span class="toc-number">1.2.5.</span> <span class="toc-text">Task7:对策</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -542,9 +514,9 @@
     <script src="/lib/gitment.js"></script>
   
   <script>
-    <!-- id: "seedlab实验防火墙攻击" -->
+    <!-- id: "seedlabCSRF跨站请求伪造" -->
     var gitment = new Gitment({
-      id: "20201226154209",
+      id: "20210106144133",
       owner: 'lixiaohun',
       repo: 'lixiaohun.github.io',
       oauth: {
